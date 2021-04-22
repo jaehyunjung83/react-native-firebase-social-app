@@ -1,4 +1,6 @@
-import React, {useEffect, useState} from 'react';
+/* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
+import React, { useEffect, useState } from 'react';
 import {
   View,
   ScrollView,
@@ -17,7 +19,7 @@ import PostCard from '../components/PostCard';
 import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
 
-import {Container} from '../styles/FeedStyles';
+import { Container } from '../styles/FeedStyles';
 
 const Posts = [
   {
@@ -82,7 +84,7 @@ const Posts = [
   },
 ];
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
   const [posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [deleted, setDeleted] = useState(false);
@@ -159,7 +161,7 @@ const HomeScreen = ({navigation}) => {
           onPress: () => deletePost(postId),
         },
       ],
-      {cancelable: false},
+      { cancelable: false },
     );
   };
 
@@ -172,7 +174,7 @@ const HomeScreen = ({navigation}) => {
       .get()
       .then((documentSnapshot) => {
         if (documentSnapshot.exists) {
-          const {postImg} = documentSnapshot.data();
+          const { postImg } = documentSnapshot.data();
 
           if (postImg != null) {
             const storageRef = storage().refFromURL(postImg);
@@ -214,48 +216,48 @@ const HomeScreen = ({navigation}) => {
     return null;
   };
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       {loading ? (
         <ScrollView
-          style={{flex: 1}}
-          contentContainerStyle={{alignItems: 'center'}}>
+          style={{ flex: 1 }}
+          contentContainerStyle={{ alignItems: 'center' }}>
           <SkeletonPlaceholder>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <View style={{width: 60, height: 60, borderRadius: 50}} />
-              <View style={{marginLeft: 20}}>
-                <View style={{width: 120, height: 20, borderRadius: 4}} />
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <View style={{ width: 60, height: 60, borderRadius: 50 }} />
+              <View style={{ marginLeft: 20 }}>
+                <View style={{ width: 120, height: 20, borderRadius: 4 }} />
                 <View
-                  style={{marginTop: 6, width: 80, height: 20, borderRadius: 4}}
+                  style={{ marginTop: 6, width: 80, height: 20, borderRadius: 4 }}
                 />
               </View>
             </View>
-            <View style={{marginTop: 10, marginBottom: 30}}>
-              <View style={{width: 300, height: 20, borderRadius: 4}} />
+            <View style={{ marginTop: 10, marginBottom: 30 }}>
+              <View style={{ width: 300, height: 20, borderRadius: 4 }} />
               <View
-                style={{marginTop: 6, width: 250, height: 20, borderRadius: 4}}
+                style={{ marginTop: 6, width: 250, height: 20, borderRadius: 4 }}
               />
               <View
-                style={{marginTop: 6, width: 350, height: 200, borderRadius: 4}}
+                style={{ marginTop: 6, width: 350, height: 200, borderRadius: 4 }}
               />
             </View>
           </SkeletonPlaceholder>
           <SkeletonPlaceholder>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <View style={{width: 60, height: 60, borderRadius: 50}} />
-              <View style={{marginLeft: 20}}>
-                <View style={{width: 120, height: 20, borderRadius: 4}} />
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <View style={{ width: 60, height: 60, borderRadius: 50 }} />
+              <View style={{ marginLeft: 20 }}>
+                <View style={{ width: 120, height: 20, borderRadius: 4 }} />
                 <View
-                  style={{marginTop: 6, width: 80, height: 20, borderRadius: 4}}
+                  style={{ marginTop: 6, width: 80, height: 20, borderRadius: 4 }}
                 />
               </View>
             </View>
-            <View style={{marginTop: 10, marginBottom: 30}}>
-              <View style={{width: 300, height: 20, borderRadius: 4}} />
+            <View style={{ marginTop: 10, marginBottom: 30 }}>
+              <View style={{ width: 300, height: 20, borderRadius: 4 }} />
               <View
-                style={{marginTop: 6, width: 250, height: 20, borderRadius: 4}}
+                style={{ marginTop: 6, width: 250, height: 20, borderRadius: 4 }}
               />
               <View
-                style={{marginTop: 6, width: 350, height: 200, borderRadius: 4}}
+                style={{ marginTop: 6, width: 350, height: 200, borderRadius: 4 }}
               />
             </View>
           </SkeletonPlaceholder>
@@ -264,12 +266,12 @@ const HomeScreen = ({navigation}) => {
         <Container>
           <FlatList
             data={posts}
-            renderItem={({item}) => (
+            renderItem={({ item }) => (
               <PostCard
                 item={item}
                 onDelete={handleDelete}
                 onPress={() =>
-                  navigation.navigate('HomeProfile', {userId: item.userId})
+                  navigation.navigate('HomeProfile', { userId: item.userId })
                 }
               />
             )}
