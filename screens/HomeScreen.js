@@ -9,6 +9,8 @@ import {
   FlatList,
   SafeAreaView,
   Alert,
+  LogBox,
+
 } from 'react-native';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
@@ -20,6 +22,9 @@ import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
 
 import { Container } from '../styles/FeedStyles';
+
+
+
 
 const Posts = [
   {
@@ -85,6 +90,12 @@ const Posts = [
 ];
 
 const HomeScreen = ({ navigation }) => {
+
+  React.useEffect(() => {
+    LogBox.ignoreLogs(['componentWillReceiveProps'])
+    }, []
+    )
+
   const [posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [deleted, setDeleted] = useState(false);

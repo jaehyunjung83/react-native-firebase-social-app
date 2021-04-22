@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, {createContext, useState} from 'react';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -21,6 +22,7 @@ export const AuthProvider = ({children}) => {
         },
         register: async (email, password) => {
           try {
+            // eslint-disable-next-line prettier/prettier
             await auth().createUserWithEmailAndPassword(email, password)
             .then(() => {
               //Once the user creation has happened successfully, we can add the currentUser into firestore

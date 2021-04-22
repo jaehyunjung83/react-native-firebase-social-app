@@ -9,6 +9,7 @@ class ProgressiveImage extends React.Component {
     Animated.timing(this.defaultImageAnimated, {
       toValue: 1,
       useNativeDriver: true,
+      isInteraction: true,
     }).start();
   };
 
@@ -16,6 +17,7 @@ class ProgressiveImage extends React.Component {
     Animated.timing(this.imageAnimated, {
       toValue: 1,
       useNativeDriver: true,
+      isInteraction: true,
     }).start();
   };
 
